@@ -15,6 +15,7 @@ class MatchReport(models.Model):
     team_score = models.IntegerField()
     opponent_score = models.IntegerField()
     match_report = models.TextField()
+    image = models.ImageField(upload_to='match_reports/', blank=True, null=True)
     player_of_match = models.CharField(max_length=100, blank=True, null=True)
     opponent_player_of_match = models.CharField(max_length=100, blank=True, null=True)
     match_date = models.DateField()
