@@ -5,6 +5,7 @@ from .models import MatchReport, Comment
 """
 Form fields for adding a match report
 """
+
 class MatchReportForm(forms.ModelForm):
     class Meta:
         model = MatchReport
@@ -13,10 +14,10 @@ class MatchReportForm(forms.ModelForm):
             'match_date': forms.DateInput(attrs={'type': 'date'}),
         }
 
+
 """
 Comment form for adding comments to a match report
-"""
-        
+""" 
 class commentForm(forms.ModelForm):
     class Meta:
         model = Comment
