@@ -18,7 +18,7 @@ class MatchReportForm(forms.ModelForm):
 """
 Comment form for adding comments to a match report
 """ 
-class commentForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content']

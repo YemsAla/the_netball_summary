@@ -17,16 +17,22 @@
 
     <hr>
 
-    <h2>Comments</h2>
 
-    {% for comment in comments %}
-        <div style="margin-bottom:10px;">
-            <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text }}</p>
-        </div>
-    {% empty %}
-        <p>No comments yet.</p>
-    {% endfor %}
+    <!-- Comments Section -->
+
+    <!-- Add Comment Form -->
+    {% if user.is_authenticated %}
+        <section>
+            <h3>Leave a Comment</h3>
+            <form method="POST" action="{% url 'add-comment' report.pk %}">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    {% else %}
+        <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
+    {% endif %}
 
 </body>
 </html>

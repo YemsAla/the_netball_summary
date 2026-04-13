@@ -6,14 +6,13 @@ from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-from match_reports.forms import MatchReportForm, commentForm
+from match_reports.forms import MatchReportForm, CommentForm 
 
 from .models import MatchReport, Comment
 
 
 """
-List view for match reports, ordered by creation date and paginated
-to show 5 reports per page.
+List view for match reports, ordered by creation date
 """
 class ReportListView(ListView):
     model = MatchReport
@@ -36,7 +35,7 @@ class ReportDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comments.all().order_by('-created_at')
-        context['comment_form'] = commentForm()
+        context['comment_form'] = CommentForm()
         return context
     
 """ 
@@ -48,7 +47,7 @@ def add_comment(request, pk):
     report = get_object_or_404(MatchReport, pk=pk)
         
     if request.method == 'POST':
-        form = commentForm(request.POST)
+        form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = request.user
