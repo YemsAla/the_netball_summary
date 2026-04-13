@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ object.title }}</title>
+</head>
+<body>
+
+    <h1>{{ object.title }}</h1>
+
+    <p>{{ object.date }} | {{ object.team }}</p>
+
+    {% if object.image %}
+        <img src="{{ object.image.url }}" style="width:300px;">
+    {% endif %}
+
+    <p>{{ object.match_report }}</p>
+
+    <hr>
+
+    <h2>Comments</h2>
+
+    {% for comment in comments %}
+        <div style="margin-bottom:10px;">
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+
+</body>
+</html>
