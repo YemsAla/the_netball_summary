@@ -27,12 +27,26 @@
             <form method="POST" action="{% url 'add-comment' report.pk %}">
                 {% csrf_token %}
                 {{ comment_form.as_p }}
-                <button type="submit">Submit</button>
+                <button type="submit">Post Comment</button>
             </form>
         </section>
     {% else %}
         <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
     {% endif %}
 
+    <!-- Display Comments -->
+    <section>
+        <h3>What others think</h3>
+
+        {% for comment in comments %}
+            <div>
+                <strong>{{ comment.user.username }}</strong> 
+                <small>{{ comment.created_at|date:"M d, Y H:i" }}</small>
+                <p>{{ comment.content }}</p>
+            </div>
+        {% empty %}
+            <p>No comments yet. Be the first to comment!</p>
+        {% endfor %}
+    </section>
 </body>
 </html>

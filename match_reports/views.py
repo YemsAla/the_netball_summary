@@ -56,7 +56,7 @@ def add_comment(request, pk):
             messages.success(request, 'Your comment has been added.')
         else:
             messages.error(request, 'There was an error with your comment. Please try again.')
-    return redirect('report-detail', pk=report.pk)
+    return redirect('report_detail', pk=report.pk)
    
 
 """
