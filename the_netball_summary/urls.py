@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('match_reports.urls')),
+    path('reports/', include('match_reports.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+     path('', RedirectView.as_view(url='/reports/', permanent=False)),
 ] 
 
 if settings.DEBUG:

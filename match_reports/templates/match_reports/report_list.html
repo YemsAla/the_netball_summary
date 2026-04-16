@@ -1,65 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Netball Match Reports</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            padding: 20px;
-        }
+{% extends "match_reports/base.html" %}
 
-        h1 {
-            text-align: center;
-        }
+{% block content %}
 
-        .report {
-            background: white;
-            padding: 15px;
-            margin: 15px auto;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+<h1>🏐 Netball Match Reports</h1>
 
-        .report h2 {
-            margin: 0 0 10px;
-        }
+{% for report in object_list %}
+    <div class="report">
+        <h2>
+            <a href="{% url 'report_detail' report.id %}">
+                {{ report.title }}
+            </a>
+        </h2>
 
-        .meta {
-            color: gray;
-            font-size: 14px;
-        }
+        <p class="meta">
+            {{ report.date }} | {{ report.team }}
+        </p>
 
-        a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-    </style>
-</head>
-<body>
+        <p>
+            {{ report.summary|truncatewords:20 }}
+        </p>
+    </div>
+{% empty %}
+    <p style="text-align:center;">No match reports yet.</p>
+{% endfor %}
 
-    <h1>🏐 Netball Match Reports</h1>
-
-    {% for report in object_list %}
-        <div class="report">
-            <h2>
-                <a href="{% url 'report_detail' report.id %}">
-                    {{ report.title }}
-                </a>
-            </h2>
-
-            <p class="meta">
-                {{ report.date }} | {{ report.team }}
-            </p>
-
-            <p>
-                {{ report.summary|truncatewords:20 }}
-            </p>
-        </div>
-    {% empty %}
-        <p style="text-align:center;">No match reports yet.</p>
-    {% endfor %}
-
-</body>
-</html>
+{% endblock %}
