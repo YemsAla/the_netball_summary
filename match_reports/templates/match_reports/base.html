@@ -9,33 +9,65 @@
     <link rel="stylesheet" href="{% static 'match_reports/css/style.css' %}">
 </head>
 <body>
-    <header>
-        <h1>The Netball Summary</h1>
-    </header>
 
-    <!-- NAVIGATION -->
-    <nav class="container my-3">
-        <a href="{% url 'report_list' %}">Home</a> |
-        <a href="{% url 'report_list' %}">Match Reports</a> |
-
-        {% if user.is_authenticated %}
-            <span>Hi {{ user.username }}!</span> |
-            <form method="POST" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
+    <!-- BOOTSTRAP NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">🏐 The Netball Summary</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'report_list' %}">Match Reports</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="nav-link text-light">Hi {{ user.username }}!</span>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-light btn-sm ms-2">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light btn-sm ms-2" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <hr>
+    <!-- MESSAGES -->
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    </div>
 
     <!-- PAGE CONTENT -->
-    <main class="container" my-4>
+    <main class="container my-4">
         {% block content %}
         {% endblock %}
     </main>
 
+    <!-- FOOTER -->
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <div class="container">
+            <small>&copy; 2026 The Netball Summary. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

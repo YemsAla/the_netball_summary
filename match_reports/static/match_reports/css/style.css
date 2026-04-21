@@ -47,6 +47,12 @@ main {
     opacity: 0.9;
 }
 
+.hero img {
+    max-height: 320px;
+    object-fit: cover;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
 /* Cards */
 .card {
     border: none;
