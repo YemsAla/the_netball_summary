@@ -23,10 +23,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('reports/', include('match_reports.urls')),
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='report_list'), name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
-     path('', RedirectView.as_view(url='/reports/', permanent=False)),
+    path('admin/', admin.site.urls),
+    path('', RedirectView.as_view(url='/reports/', permanent=False)),
 ] 
 
 if settings.DEBUG:

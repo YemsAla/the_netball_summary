@@ -31,8 +31,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = 'reports_list'
+LOGIN_REDIRECT_URL = 'report_list'
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'report_list'
 
 # Application definition
 
