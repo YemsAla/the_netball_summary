@@ -27,7 +27,8 @@ urlpatterns = [
     path('accounts/logout/', auth_views.LogoutView.as_view(next_page='report_list'), name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/reports/', permanent=False)),
+    # 
+    path('', include('match_reports.urls')),
 ] 
 
 if settings.DEBUG:

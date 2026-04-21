@@ -14,6 +14,12 @@ from .models import MatchReport, Comment
 """
 List view for match reports, ordered by creation date
 """
+def home(request):
+    recent_reports = MatchReport.objects.all().order_by('-created_at')[:3]
+    return render(request, 'match_reports/home.html', {
+        'recent_reports': recent_reports,
+    })
+
 class ReportListView(ListView):
     model = MatchReport
     template_name = 'match_reports/report_list.html'
