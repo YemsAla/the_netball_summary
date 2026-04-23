@@ -1,27 +1,75 @@
 {% extends "match_reports/base.html" %}
+{% load static %}
+
 
 {% block content %}
 
-<h1>🏐 Netball Match Reports</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>🏐 Match Reports 🏐</h1>
+    {% if user.is_authenticated %}
+        <a href="{% url 'report-create' %}" class="btn btn-success">+ Add Match Report</a>
+    {% endif %}
+</div>
 
-{% for report in object_list %}
-    <div class="report">
-        <h2>
-            <a href="{% url 'report_detail' report.id %}">
-                {{ report.title }}
-            </a>
-        </h2>
-
-        <p class="meta">
-            {{ report.date }} | {{ report.team }}
-        </p>
-
-        <p>
-            {{ report.summary|truncatewords:20 }}
-        </p>
+{% for report in reports %}
+    <div class="card mb-3 shadow-sm">
+        <div class="row g-0">
+            {% if report.image %}
+                <div class="col-md-3">
+                    <img src="{{ report.image.url }}" class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="{{ report.title }}">
+                </div>
+            {% endif %}
+            <div class="col">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title">
+                            <a href="{% url 'report_detail' report.pk %}" class="text-decoration-none text-dark">{{ report.title }}</a>
+                        </h5>
+                        <span class="badge bg-secondary">{{ report.get_match_type_display }}</span>
+                    </div>
+                    <p class="card-text text-muted mb-1">
+                        <strong>{{ report.team_name }}</strong> vs <strong>{{ report.opponent_name }}</strong>
+                    </p>
+                    <p class="card-text">
+                        <span class="badge bg-success fs-6">{{ report.team_score }} - {{ report.opponent_score }}</span>
+                    </p>
+                    <p class="card-text">{{ report.match_report|truncatewords:20 }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ report.match_date }} | By {{ report.user.username }}</small>
+                        <a href="{% url 'report_detail' report.pk %}" class="btn btn-outline-dark btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% empty %}
-    <p style="text-align:center;">No match reports yet.</p>
+    <div class="text-center mt-5">
+        <p class="text-muted fs-5">No match reports yet.</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'report-create' %}" class="btn btn-success">+ Add the first one</a>
+        {% endif %}
+    </div>
 {% endfor %}
+
+<!-- PAGINATION -->
+{% if is_paginated %}
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+            <li class="page-item disabled">
+                <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            </li>
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
 
 {% endblock %}
