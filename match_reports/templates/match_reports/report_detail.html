@@ -1,52 +1,110 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ object.title }}</title>
-</head>
-<body>
+{% extends "match_reports/base.html" %}
+{% load static %}
 
-    <h1>{{ object.title }}</h1>
+{% block content %}
 
-    <p>{{ object.date }} | {{ object.team }}</p>
+<div class="row justify-content-center">
+    <div class="col-md-8">
 
-    {% if object.image %}
-        <img src="{{ object.image.url }}" style="width:300px;">
-    {% endif %}
+        <!-- REPORT HEADER -->
+        <div class="report-header mb-4">
+            <h1 class="fw-bold">{{ report.title }}</h1>
+            <p class="report-meta">
+                <span class="badge bg-secondary">{{ report.get_match_type_display }}</span>
+                <span class="ms-2">{{ report.match_date }}</span>
+                <span class="ms-2">By <strong>{{ report.user.username }}</strong></span>
+            </p>
+        </div>
 
-    <p>{{ object.match_report }}</p>
+        <!-- REPORT IMAGE -->
+        {% if report.image %}
+            <img src="{{ report.image.url }}" class="img-fluid rounded-3 mb-4 w-100" style="max-height: 400px; object-fit: cover;" alt="{{ report.title }}">
+        {% endif %}
 
-    <hr>
-
-
-    <!-- Comments Section -->
-
-    <!-- Add Comment Form -->
-    {% if user.is_authenticated %}
-        <section>
-            <h3>Leave a Comment</h3>
-            <form method="POST" action="{% url 'add-comment' report.pk %}">
-                {% csrf_token %}
-                {{ comment_form.as_p }}
-                <button type="submit">Post Comment</button>
-            </form>
-        </section>
-    {% else %}
-        <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
-    {% endif %}
-
-    <!-- Display Comments -->
-    <section>
-        <h3>What others think</h3>
-
-        {% for comment in comments %}
-            <div>
-                <strong>{{ comment.user.username }}</strong> 
-                <small>{{ comment.created_at|date:"M d, Y H:i" }}</small>
-                <p>{{ comment.content }}</p>
+        <!-- MATCH DETAILS -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h4 class="card-title">Match Details</h4>
+                <div class="row text-center my-3">
+                    <div class="col">
+                        <h5>{{ report.team_name }}</h5>
+                        <span class="display-4 fw-bold text-success">{{ report.team_score }}</span>
+                    </div>
+                    <div class="col-2 d-flex align-items-center justify-content-center">
+                        <span class="fs-4 fw-bold text-muted">vs</span>
+                    </div>
+                    <div class="col">
+                        <h5>{{ report.opponent_name }}</h5>
+                        <span class="display-4 fw-bold text-danger">{{ report.opponent_score }}</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-3">
+                    {% if report.player_of_match %}
+                        <div class="col-md-6">
+                            <p><strong>⭐ Player of the Match:</strong> {{ report.player_of_match }}</p>
+                        </div>
+                    {% endif %}
+                    {% if report.opponent_player_of_match %}
+                        <div class="col-md-6">
+                            <p><strong>⭐ Opposition Player of the Match:</strong> {{ report.opponent_player_of_match }}</p>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-        {% empty %}
-            <p>No comments yet. Be the first to comment!</p>
-        {% endfor %}
-    </section>
-</body>
-</html>
+        </div>
+
+        <!-- MATCH REPORT -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h4 class="card-title">Match Report</h4>
+                <p class="card-text">{{ report.match_report }}</p>
+            </div>
+        </div>
+
+        {% comment %} <!-- EDIT/DELETE BUTTONS (author only) -->
+        {% if user == report.user %}
+            <div class="d-flex gap-2 mb-4">
+                <a href="{% url 'report-update' report.pk %}" class="btn btn-outline-primary">Edit Report</a>
+                <a href="{% url 'report-delete' report.pk %}" class="btn btn-outline-danger">Delete Report</a>
+            </div> {% endcomment %}
+        {% comment %} {% endif %} {% endcomment %}
+
+        <!-- COMMENTS SECTION -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h4 class="card-title">What others think</h4>
+                {% for comment in comments %}
+                    <div class="comment-card">
+                        <span class="comment-author">{{ comment.user.username }}</span>
+                        <span class="comment-date ms-2">{{ comment.created_at|date:"d M Y H:i" }}</span>
+                        <p class="mt-1 mb-0">{{ comment.content }}</p>
+                    </div>
+                {% empty %}
+                    <p class="text-muted">No comments yet. Be the first to comment!</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- ADD COMMENT FORM -->
+        {% if user.is_authenticated %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h4 class="card-title">Leave a Comment</h4>
+                    <form method="POST" action="{% url 'add-comment' report.pk %}">
+                        {% csrf_token %}
+                        {{ comment_form.as_p }}
+                        <button type="submit" class="btn btn-success mt-2">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <p><a href="{% url 'login' %}">Log in</a> to leave a comment.</p>
+        {% endif %}
+
+        <a href="{% url 'report_list' %}" class="btn btn-outline-secondary mb-4">← Back to Reports</a>
+
+    </div>
+</div>
+
+{% endblock %}
