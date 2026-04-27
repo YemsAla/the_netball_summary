@@ -78,3 +78,20 @@ class ReportCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         messages.success(self.request, 'Your match report has been successfully created.')
         return super().form_valid(form)
+    
+    
+"""
+View for updating a match report - only accessible to report author"
+"""
+class ReportUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = MatchReport
+    form_class = MatchReportForm
+    template_name = 'match_reports/report_form.html'
+
+    def test_func(self):
+        report = self.get_object()
+        return report.user == self.request.user
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'You\'ve successfully updated your match report.')
+        return super().form_valid(form)
