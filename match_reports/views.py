@@ -67,7 +67,7 @@ def add_comment(request, pk):
 
 """
 View for creating a new match report. Only accessible to logged-in users.
-When a report is successfully created, a success message is displayed to the user.
+When a report is successfully created, a success message is displayed.
 """  
 class ReportCreateView(LoginRequiredMixin, CreateView):
     model = MatchReport
@@ -95,3 +95,21 @@ class ReportUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, 'You\'ve successfully updated your match report.')
         return super().form_valid(form)
+    
+
+"""
+View for deleting a match report - only accessible to report author
+"""
+class ReportDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = MatchReport
+    template_name = 'match_reports/delete_report.html'
+    success_url = '/reports/'
+    
+    def test_func(self):
+        report = self.get_object()
+        return report.user == self.request.user
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'You\'ve successfully deleted your match report.')
+        return super().form_valid(form)
+    
