@@ -62,13 +62,12 @@
             </div>
         </div>
 
-        {% comment %} <!-- EDIT/DELETE BUTTONS (author only) -->
+        <!-- EDIT BUTTON (author only) -->
         {% if user == report.user %}
             <div class="d-flex gap-2 mb-4">
-                <a href="{% url 'report-update' report.pk %}" class="btn btn-outline-primary">Edit Report</a>
-                <a href="{% url 'report-delete' report.pk %}" class="btn btn-outline-danger">Delete Report</a>
-            </div> {% endcomment %}
-        {% comment %} {% endif %} {% endcomment %}
+                <a href="{% url 'report-update' report.pk %}" class="btn btn-outline-primary">Edit</a>    
+            </div>
+        {% endif %}
 
         <!-- COMMENTS SECTION -->
         <div class="card shadow-sm mb-4">

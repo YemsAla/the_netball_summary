@@ -6,7 +6,9 @@
     <div class="col-md-8">
         <div class="card shadow-sm">
             <div class="card-body p-4">
-                <h2 class="card-title mb-4">📝 Create Match Report</h2>
+                <h2 class="card-title mb-4">
+                    {% if object %}📝 Update Match Report{% else %}📝 Create Match Report{% endif %}
+                </h2>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
@@ -25,7 +27,9 @@
                     {% endfor %}
                     <div class="d-flex justify-content-between mt-4">
                         <a href="{% url 'report_list' %}" class="btn btn-outline-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-success">Submit Report</button>
+                        <button type="submit" class="btn btn-success">
+                            {% if object %}Update Report{% else %}Submit Report{% endif %}
+                        </button>
                     </div>
                 </form>
             </div>
