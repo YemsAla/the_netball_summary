@@ -27,6 +27,11 @@ main {
     letter-spacing: 0.5px;
 }
 
+.navbar .nav-link.active {
+    border-bottom: 2px solid white;
+    padding-bottom: 2px;
+}
+
 /* Hero */
 .hero {
     background: linear-gradient(135deg, #212529, #495057);

@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link {% if request.path == '/' %}active fw-bold text-white{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'report_list' %}">Match Reports</a>
+                        <a class="nav-link {% if '/reports/' in request.path %}active fw-bold text-white{% endif %}" href="{% url 'report_list' %}">Match Reports</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
