@@ -9,7 +9,7 @@
             <div class="card-body text-center p-5">
                 <h3 class="fw-bold mb-4">Confirm Deletion</h3>
                 <p>Are you sure you want to delete the report<strong>{{ report.title }}</strong>?</p>
-                <p class="fst-italic fs-6">This action cannot be undone.</p>
+                <p class="fst-italic fs-8 text-danger">This action cannot be undone.</p>
                 <div class="d-flex justify-content-center mt-4">
                     <form method="POST">
                         {% csrf_token %}

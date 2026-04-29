@@ -94,6 +94,19 @@ main {
     border-radius: 0.5rem;
 }
 
+/* Reports list page */
+.reports-page {
+    background-color: #c3f4fc;
+    border-radius: 0.75rem;
+    padding: 2rem;
+}
+
+/* Add Match Report button alignment */
+.reports-page .add-btn {
+    float: right;
+    margin-bottom: 1rem;
+}
+
 /* Report detail page */
 .report-header {
     border-bottom: 2px solid #e9ecef;

@@ -23,11 +23,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('reports/', include('match_reports.urls')),
     path('accounts/logout/', auth_views.LogoutView.as_view(next_page='report_list'), name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    # 
     path('', include('match_reports.urls')),
 ] 
 
