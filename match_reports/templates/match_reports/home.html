@@ -21,7 +21,10 @@
 </div>
 
 <!-- RECENT REPORTS -->
-<h2 class="mb-4">Recent Match Reports</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Recent Match Reports</h2>
+    <a href="{% url 'report_list' %}" class="btn btn-outline-dark">View All Reports →</a>
+</div>
 
 {% if recent_reports %}
     <div class="row row-cols-1 row-cols-md-3 g-4">
