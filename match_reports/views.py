@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages 
-# from django import Q 
+from django.db.models import Q 
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -14,7 +14,8 @@ from .models import MatchReport, Comment
 
 
 """
-List view for match reports, ordered by creation date
+List view for match reports, ordered by creation date.
+Supports search by team name and filter by match type.
 """
 def home(request):
     recent_reports = MatchReport.objects.all().order_by('-created_at')[:3]
@@ -27,7 +28,29 @@ class ReportListView(ListView):
     template_name = 'match_reports/report_list.html'
     context_object_name = 'reports'
     ordering = ['-created_at']
-    paginate_by = 5
+    paginate_by = 5    
+    
+    def get_queryset(self):
+        queryset = MatchReport.objects.all().order_by('-created_at')
+        query = self.request.GET.get('q')
+        match_type = self.request.GET.get('match_type')
+
+        if query:
+            queryset = queryset.filter(
+                Q(team_name__icontains=query) |
+                Q(opponent_name__icontains=query)
+            )
+        if match_type:
+            queryset = queryset.filter(match_type=match_type)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q', '')
+        context['match_type'] = self.request.GET.get('match_type', '')
+        context['match_type_choices'] = MatchReport.MATCH_TYPE_CHOICES
+        return context
     
 """
 Detail view for a match report, including comments and comment form.
