@@ -93,8 +93,13 @@
                     <h4 class="card-title">Leave a Comment</h4>
                     <form method="POST" action="{% url 'add-comment' report.pk %}">
                         {% csrf_token %}
-                        {{ comment_form.as_p }}
-                        <button type="submit" class="btn btn-success mt-2">Post Comment</button>
+                        <div class="mb-3">
+                            <textarea name="content" 
+                                    class="form-control" 
+                                    rows="3" 
+                                    placeholder="Add a comment..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Post Comment</button>
                     </form>
                 </div>
             </div>
