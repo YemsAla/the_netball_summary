@@ -88,7 +88,7 @@
 
         <!-- ADD COMMENT FORM -->
         {% if user.is_authenticated %}
-            <div class="card shadow-sm mb-4">
+            <div class="card shadow-sm mb-4" id="comment">
                 <div class="card-body">
                     <h4 class="card-title">Leave a Comment</h4>
                     <form method="POST" action="{% url 'add-comment' report.pk %}">
@@ -104,7 +104,7 @@
                 </div>
             </div>
         {% else %}
-            <p><a href="{% url 'login' %}">Log in</a> to leave a comment.</p>
+            <p><a href="{% url 'login' %}?next={{ request.path }}%23comment">Log in</a> to leave a comment.</p> 
         {% endif %}
 
         <a href="{% url 'report_list' %}" class="btn btn-outline-secondary mb-4">← Back to Reports</a>
