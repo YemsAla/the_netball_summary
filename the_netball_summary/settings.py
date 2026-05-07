@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'the-netball-summary.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'the-netball-summary-168dbfef7a3e.herokuapp.com', '.herokuapp.com']
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
