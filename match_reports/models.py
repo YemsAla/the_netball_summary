@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse 
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class MatchReport(models.Model):
@@ -16,7 +17,7 @@ class MatchReport(models.Model):
     team_score = models.IntegerField()
     opponent_score = models.IntegerField()
     match_report = models.TextField()
-    image = models.ImageField(upload_to='match_reports/', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     player_of_match = models.CharField(max_length=100, blank=True, null=True)
     opponent_player_of_match = models.CharField(max_length=100, blank=True, null=True)
     match_date = models.DateField()
