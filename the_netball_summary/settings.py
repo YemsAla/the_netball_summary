@@ -151,3 +151,5 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CSRF_TRUSTED_ORIGINS = ['https://the-netball-summary-168dbfef7a3e.herokuapp.com']
