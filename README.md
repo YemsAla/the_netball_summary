@@ -7,3 +7,14 @@ A centralised platform for netball players, coaches and fans to create and share
 **Live site:** [https://the-netball-summary-168dbfef7a3e.herokuapp.com](https://the-netball-summary-168dbfef7a3e.herokuapp.com)
 
 **GitHub repository:** [https://github.com/YemsAla/the_netball_summary](https://github.com/YemsAla/the_netball_summary)
+
+## Table of Contents
+
+- [Project Goals] (#project-goals)
+- [User Stories] (#user-stories)
+- [Design] (#design)
+    - [Wireframes](#wireframes)
+    - [Database Schema (ERD) (#database-schema-erd)]
+    - [Colour Scheme and Typography](#colour-scheme-and-typography)
+
+
