@@ -10,11 +10,67 @@ A centralised platform for netball players, coaches and fans to create and share
 
 ## Table of Contents
 
-- [Project Goals] (#project-goals)
-- [User Stories] (#user-stories)
+- [ProjectGoals] (#project-goals)
+- [UserStories] (#user-stories)
 - [Design] (#design)
     - [Wireframes](#wireframes)
-    - [Database Schema (ERD) (#database-schema-erd)]
+    - [DatabaseSchema] (#database-schema)
     - [Colour Scheme and Typography](#colour-scheme-and-typography)
+    - [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Technologies Used](#technologies-used)
+- [Testing](#testing)
+  - [Manual Testing](#manual-testing)
+  - [Bugs and Fixes](#bugs-and-fixes)
+  - [Responsiveness](#responsiveness)
+  - [Browser Compatibility](#browser-compatibility)
+- [Deployment](#deployment)
+- [Credits](#credits)
+
+
+## Project Goals
+
+### External user goals
+
+- Record the details of a netball match they have played or witnessed, including a score, image, written summary and standout players as voted by their team and the opposition.
+- Browse and search match reports shared by other players to learn, compare performances and gain insights across leagues, teams and tournaments.
+
+### Site owner goals
+
+- Provide a reliable, community-driven platform that's easy-to-use, where netball players can document and share their match experiences.
+- Build an engaged community where users regularly contribute reports and interact with each other's content through comments.
+
+
+## User Stories
+
+    ✅ - successfully implemented
+    ❌ - yet to be implemented
+
+✅ 1. As a visitor, I want to browse all match reports without an account so that I can explore the platform before registering.
+
+✅ 2. As a player, I want to register for an account so that I can create and manage my own match reports.
+
+✅ 3. As a logged-in user, I want to create a match report so that I can document a match my team played.
+
+✅ 4. As a logged-in user, I want to edit my own match report so that I can correct or update details after posting.
+
+✅ 5. As a logged-in user, I want to delete my own match report so that I can remove reports I no longer want published.
+
+✅ 6. As a logged-in user, I want to comment on any match report so that I can engage with reports from other teams.
+
+✅ 7. As a visitor, I want to search reports by team name so that I can quickly find reports relevant to a team I follow.
+
+✅ 8. As a visitor, I want to filter reports by match type so that I can distinguish between different match types.
+
+✅ 9. As a site owner, I want editing restricted to report authors so that content integrity is maintained.
+
+✅ 10. As a site owner, I want pagination on the reports list so that the page doesn't become exhaustive as the number of reports grows.
+
+❌ 11. As a user, I want to like match reports so that I can show appreciation for content without having to comment
+
+❌ 12. As a user, I want a forgot password option so that I can recover my account if I forget my credentials.
+
+
 
 
