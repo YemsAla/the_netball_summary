@@ -136,8 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-X_FRAME_OPTIONS = 'ALLOWALL'
-
 # Database
 DATABASES = {
     'default': dj_database_url.config(
