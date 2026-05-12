@@ -79,7 +79,7 @@ A centralised platform for netball players, coaches and fans to create and share
 
 ### Wireframes
 
-Wireframes were created for all key pages in desktop and mobile to plan layout and user flow.
+Wireframes were created using Balsamiq, for all key pages in desktop and mobile to plan layout and user flow.
 
 #### Homepage
 
@@ -132,6 +132,8 @@ Rather than creating separate `Team` & `League` tables, these were implemented a
 ---
 
 ### Colour Scheme and Typography
+
+![Colour Palette Collage](docs/colour_palette_collage.jpg)
 
 The site uses Bootstrap utilities for layout and spacing, with a custom stylesheet for the cards, score badges and hero section. The colour palette is kept minimal to remain readable and accessible across all devices.
 
@@ -186,5 +188,50 @@ Success and error messages display at the top of the page after key actions incl
 **Pagination**
 
 The reports list is paginated at 5 reports per page with numbered navigation at the bottom of the page.
+
+---
+
+### Future Features
+
+- Ability to 'Like' to allow users to react to match reports without having to comment
+- Comment deletion so users can remove their own comments
+- Forgot password flow with email-based reset
+- Separate Team and League models for richer filtering and league tables
+- Improved paragraph rendering in match report body text on the report detail page (currently all text displays together)
+- Username styling differentiation in comments for better readability (make it bolder)
+- Firefox browser testing
+
+---
+
+## Technologies Used
+
+### Languages
+
+- Python 3
+- HTML5
+- CSS3
+
+### Frameworks and Libraries
+
+| Package | Purpose |
+|---------|---------|
+| Django 6.0.3 | Main web framework |
+| Bootstrap 5 | Front-end layout and components |
+| Gunicorn | WSGI HTTP server for Heroku deployment |
+| Whitenoise | Serves static files in production |
+| Cloudinary + dj3-cloudinary-storage | Media file storage |
+| dj-database-url | Database URL parsing for Heroku |
+| psycopg2-binary | PostgreSQL adapter |
+| python-dotenv | Environment variable management |
+| Pillow | Image handling |
+
+### Tools and Services
+
+- **Git / GitHub** — version control
+- **Heroku** — deployment platform
+- **PostgreSQL** — production database
+- **SQLite** — local development database
+- **VS Code** — code editor
+- **Balsamiq** — wireframe creation
 
 ---
