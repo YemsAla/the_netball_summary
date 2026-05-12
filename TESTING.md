@@ -38,17 +38,23 @@
 
 ![Create report success](docs/testing/create-success.png)
 
+| Test | Expected result | Actual result | Pass/Fail |
+|------|----------------|---------------|-----------|
 | Update a match report | Redirected to detail page with success message | As expected | ✅ Pass |
 | Delete a match report | Redirected to reports list with success message | As expected | ✅ Pass |
 
 ![Delete confirmation](docs/testing/delete-confirm_1.png)
 ![Delete success](docs/testing/delete-confirm_2.png)
 
-| Authorisation check — edit another user's report URL directly | 403 Forbidden | As expected | ✅ Pass |
+| Test | Expected result | Actual result | Pass/Fail |
+|------|----------------|---------------|-----------|
+| Authorisation check - attempt to edit another user's report URL directly | 403 Forbidden | As expected | ✅ Pass |
 | Submit empty create form | Validation errors shown, no report created | As expected | ✅ Pass |
 
 ![Form validation errors](docs/testing/form-validation.png)
 
+| Test | Expected result | Actual result | Pass/Fail |
+|------|----------------|---------------|-----------|
 | Unauthenticated user visits /reports/create/ | Redirected to login page | As expected | ✅ Pass |
 | Pagination — more than 5 reports exist | Pagination panel appears, Next loads next page | As expected | ✅ Pass |
 
