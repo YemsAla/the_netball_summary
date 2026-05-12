@@ -309,15 +309,15 @@ All match report content used during development and testing was created for dem
 ### Media
 
 - Hero image: [pikisuperstar on Freepik](https://www.freepik.com/free-vector/basketball-team-illustration_2686637.htm)
-- Netball team images (personally owned)
+- Netball team images (personally owned & permissions given)
 
 ### Code and Resources
 
-- [Django documentation](https://docs.djangoproject.com/) — core framework reference
-- [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.0/) — grid system and components
-- [Django authentication system](https://docs.djangoproject.com/en/stable/topics/auth/) — login, logout and registration
-- [Code Institute](https://codeinstitute.net/) — project structure and deployment guidance
-- [Claude by Anthropic](https://claude.ai) — used as a development aid for debugging, code guidance and README documentation
+- [Django documentation](https://docs.djangoproject.com/) - core framework reference
+- [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.0/) - grid system and components
+- [Django authentication system](https://docs.djangoproject.com/en/stable/topics/auth/) - login, logout and registration
+- [Code Institute](https://codeinstitute.net/) - project structure and deployment guidance
+- [Claude by Anthropic](https://claude.ai) - used as a development aid for debugging, code guidance and README documentation
 
 ### Acknowledgements
 
