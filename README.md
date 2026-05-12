@@ -138,3 +138,53 @@ The site uses Bootstrap utilities for layout and spacing, with a custom styleshe
 **Typography:** Bootstrap's default sans-serif stack is used throughout. No custom fonts were imported, keeping page load times fast.
 
 ---
+
+## Features
+
+### Existing Features
+
+**Navigation bar**
+
+Present on all pages. Collapses to a hamburger menu on mobile and tablet. Shows Login and Register links when logged out and user's username with a Logout link when logged in.
+
+**Hero section**
+
+A full-width hero section on the homepage with a description of the site's purpose and CTA button. The hero image is hidden on mobile using `d-none d-md-block` to keep the layout clean on smaller screens.
+
+**Match reports list**
+
+Displays all submitted match reports as cards showing the match title, team names, score, report excerpt, league and date. Includes a CTA to read the full report on the match report detail page. Pagination is set at 5 reports per page for better usability and reports can be filtered by team name or match type using the search bar and dropdown.
+
+**Report detail page**
+
+Shows the full match report details including a team picture, score display, complete match summary, player of the match for both teams, date and match type. Edit and Delete buttons are only visible to the report's author.
+
+**Create match report**
+
+This displays a form to logged-in users only capturing: title, team name, opponent name, scores, image, match type, match date, match summary and both players of the match. Once a report is successfully subitted,  the user is redirected to the new report's detail page with a success message.
+
+**Edit match report**
+
+Identical to the create form, pre-populated with existing data but both the page & button titles change to 'Update' rathar than 'create'. This feature is only accessible to the report's author; any attempt to access another user's edit URL returns an error. Uses `get_absolute_url()` to redirect correctly on both create and update.
+
+**Delete match report**
+
+A confirmation page displaying the report title before deletion. Deleting redirects to the reports list page with a success message. A Cancel button returns the user to the match report detail page.
+
+**User registration and login**
+
+Using standard Django authentication. Login and logout both redirect to the homepage. Registration validates that passwords match before creating the account.
+
+**Comments**
+
+Logged-in users can add comments to any match report. Comments display with most recently added first. Logged-out users see a "Log in to comment" link that returns them directly to the comment section after authentication using the `?next=` parameter with a `#comment` anchor.
+
+**Flash messages**
+
+Success and error messages display at the top of the page after key actions including create, edit, delete and comment.
+
+**Pagination**
+
+The reports list is paginated at 5 reports per page with numbered navigation at the bottom of the page.
+
+---
