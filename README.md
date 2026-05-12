@@ -239,3 +239,87 @@ The reports list is paginated at 5 reports per page with numbered navigation at 
 ## Testing
 
 Full testing documentation including manual tests, bug fixes and browser compatibility can be found in [TESTING.md](TESTING.md)
+
+---
+
+## Deployment
+
+The project is deployed on **Heroku** using a PostgreSQL database.
+
+### Local development setup
+
+1. Clone the repository: 
+git clone https://github.com/YemsAla/the_netball_summary.git
+cd the_netball_summary
+
+2. Create and activate a virtual environment:
+python -m venv venv
+source venv/bin/activate
+
+3. Install dependencies:
+pip install -r requirements.txt
+
+4. Create a `.env` file in the root directory with the following variables:
+SECRET_KEY=your-secret-key
+DATABASE_URL=your-database-url
+CLOUDINARY_URL=your-cloudinary-url
+DEBUG=True
+
+5. Run migrations and start the development server:
+python manage.py migrate
+python manage.py runserver
+
+### Heroku deployment
+
+1. Create a new Heroku app.
+2. In the Heroku dashboard go to **Settings → Config Vars** and add:
+   - `SECRET_KEY`
+   - `DATABASE_URL`
+   - `CLOUDINARY_URL`
+3. Connect the GitHub repository under the **Deploy** tab.
+4. Ensure `Procfile` contains:
+web: gunicorn the_netball_summary.wsgi
+
+5. Run migrations on Heroku:
+heroku run python manage.py migrate
+
+6. Deploy via the Heroku dashboard or push to the connected branch.
+
+### Forking the repository
+
+1. Log in to GitHub and locate the repository.
+2. At the top of the repository page click the **Fork** button.
+3. You will now have a copy of the repository in your GitHub account.
+
+### Making a local clone
+
+1. Log in to GitHub and locate the repository.
+2. Click **Code** and copy the HTTPS URL.
+3. Open your terminal and run:
+git clone https://github.com/YemsAla/the_netball_summary.git
+
+---
+
+## Credits
+
+### Content
+
+All match report content used during development and testing was created for demonstration purposes.
+
+### Media
+
+- Hero image: [pikisuperstar on Freepik](https://www.freepik.com/free-vector/basketball-team-illustration_2686637.htm)
+- Netball team images (personally owned)
+
+### Code and Resources
+
+- [Django documentation](https://docs.djangoproject.com/) — core framework reference
+- [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.0/) — grid system and components
+- [Django authentication system](https://docs.djangoproject.com/en/stable/topics/auth/) — login, logout and registration
+- [Code Institute](https://codeinstitute.net/) — project structure and deployment guidance
+- [Claude by Anthropic](https://claude.ai) — used as a development aid for debugging, code guidance and README documentation
+
+### Acknowledgements
+
+- My tutor/mentor Rachel for guidance and direction throughout the project.
+- The Code Institute community 
