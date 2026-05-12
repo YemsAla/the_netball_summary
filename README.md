@@ -10,11 +10,11 @@ A centralised platform for netball players, coaches and fans to create and share
 
 ## Table of Contents
 
-- [ProjectGoals] (#project-goals)
-- [UserStories] (#user-stories)
+- [Project Goals] (#project-goals)
+- [User Stories] (#user-stories)
 - [Design] (#design)
     - [Wireframes](#wireframes)
-    - [DatabaseSchema] (#database-schema)
+    - [Database Schema] (#database-schema)
     - [Colour Scheme and Typography](#colour-scheme-and-typography)
     - [Features](#features)
   - [Existing Features](#existing-features)
@@ -28,6 +28,7 @@ A centralised platform for netball players, coaches and fans to create and share
 - [Deployment](#deployment)
 - [Credits](#credits)
 
+---
 
 ## Project Goals
 
@@ -41,6 +42,7 @@ A centralised platform for netball players, coaches and fans to create and share
 - Provide a reliable, community-driven platform that's easy-to-use, where netball players can document and share their match experiences.
 - Build an engaged community where users regularly contribute their match reports and interact with each other's content by leaving comments.
 
+---
 
 ## User Stories
 
@@ -71,6 +73,7 @@ A centralised platform for netball players, coaches and fans to create and share
 
 ❌ 12. As a user, I want a forgotten password option so that I can recover my account if I forget my credentials.
 
+---
 
 ## Design
 
@@ -90,7 +93,7 @@ Wireframes were created for all key pages in desktop and mobile to plan layout a
 |---------|--------|
 | ![Reports list desktop wireframe](docs/wireframe_list_desktop.png) | ![Reports list mobile wireframe](docs/wireframe_list_mobile.png) |
 
-#### Report Detail
+#### Match Report Detail
 
 | Desktop | Mobile |
 |---------|--------|
@@ -107,5 +110,25 @@ Wireframes were created for all key pages in desktop and mobile to plan layout a
 | Desktop | Mobile |
 |---------|--------|
 | ![Login desktop wireframe](docs/wireframe_login_desktop.png) | ![Login mobile wireframe](docs/wireframe_login_mobile.png) |
+
+---
+
+### Database Schema (ERD)
+
+The database was designed to support match report creation and community interation.
+
+![Entity relationship diagram](docs/erd.png)
+
+**Relationships:**
+
+- One `User` can create many `MatchReport` records (one-to-many)
+- One `MatchReport` can have many `Comment` records (one-to-many)
+- One `User` can write many `Comment` records (one-to-many)
+
+**Design Decisions:**
+
+Rather than creating separate `Team` & `League` tables, these were implemented as simple text fields within `Match Report` to reduce complexity for this MVP phase. The structure is designed so that it can be extended in future iterations.
+
+---
 
 
