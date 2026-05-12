@@ -131,4 +131,10 @@ Rather than creating separate `Team` & `League` tables, these were implemented a
 
 ---
 
+### Colour Scheme and Typography
 
+The site uses Bootstrap utilities for layout and spacing, with a custom stylesheet for the cards, score badges and hero section. The colour palette is kept minimal to remain readable and accessible across all devices.
+
+**Typography:** Bootstrap's default sans-serif stack is used throughout. No custom fonts were imported, keeping page load times fast.
+
+---
