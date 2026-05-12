@@ -235,3 +235,7 @@ The reports list is paginated at 5 reports per page with numbered navigation at 
 - **Balsamiq** — wireframe creation
 
 ---
+
+## Testing
+
+Full testing documentation including manual tests, bug fixes and browser compatibility can be found in [TESTING.md](TESTING.md)
