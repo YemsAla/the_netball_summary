@@ -33,13 +33,13 @@ A centralised platform for netball players, coaches and fans to create and share
 
 ### External user goals
 
-- Record the details of a netball match they have played or witnessed, including a score, image, written summary and standout players as voted by their team and the opposition.
-- Browse and search match reports shared by other players to learn, compare performances and gain insights across leagues, teams and tournaments.
+- Record the details of a netball match they have played or witnessed, including a score, image and written summary. They can also record the MVPs as voted by their team and the opposition.
+- Browse and search match reports shared by other players to learn, compare performances and gain insights across all match types (leagues/friendlies/tournaments).
 
 ### Site owner goals
 
 - Provide a reliable, community-driven platform that's easy-to-use, where netball players can document and share their match experiences.
-- Build an engaged community where users regularly contribute reports and interact with each other's content through comments.
+- Build an engaged community where users regularly contribute their match reports and interact with each other's content by leaving comments.
 
 
 ## User Stories
@@ -69,8 +69,43 @@ A centralised platform for netball players, coaches and fans to create and share
 
 ❌ 11. As a user, I want to like match reports so that I can show appreciation for content without having to comment
 
-❌ 12. As a user, I want a forgot password option so that I can recover my account if I forget my credentials.
+❌ 12. As a user, I want a forgotten password option so that I can recover my account if I forget my credentials.
 
 
+## Design
+
+### Wireframes
+
+Wireframes were created for all key pages in desktop and mobile to plan layout and user flow.
+
+#### Homepage
+
+| Desktop | Mobile |
+|---------|--------|
+| ![Homepage desktop wireframe](docs/wireframe_home_desktop.png) | ![Homepage mobile wireframe](docs/wireframe_home_mobile.png) |
+
+#### Match Reports List
+
+| Desktop | Mobile |
+|---------|--------|
+| ![Reports list desktop wireframe](docs/wireframe_list_desktop.png) | ![Reports list mobile wireframe](docs/wireframe_list_mobile.png) |
+
+#### Report Detail
+
+| Desktop | Mobile |
+|---------|--------|
+| ![Report detail desktop wireframe](docs/wireframe_detail_desktop.png) | ![Report detail mobile wireframe](docs/wireframe_detail_mobile.png) |
+
+#### Create / Edit Report Form
+
+| Desktop | Mobile |
+|---------|--------|
+| ![Form desktop wireframe](docs/wireframe_form_desktop.png) | ![Form mobile wireframe](docs/wireframe_form_mobile.png) |
+
+#### Login / Register
+
+| Desktop | Mobile |
+|---------|--------|
+| ![Login desktop wireframe](docs/wireframe_login_desktop.png) | ![Login mobile wireframe](docs/wireframe_login_mobile.png) |
 
 
