@@ -6,11 +6,12 @@ from .models import MatchReport, Comment
 Form fields for adding a match report
 """
 
+
 class MatchReportForm(forms.ModelForm):
     class Meta:
         model = MatchReport
-        fields = ['title', 'team_name', 'opponent_name', 'team_score', 
-                  'opponent_score', 'match_report', 'image', 'player_of_match', 
+        fields = ['title', 'team_name', 'opponent_name', 'team_score',
+                  'opponent_score', 'match_report', 'image', 'player_of_match',
                   'opponent_player_of_match', 'match_date', 'match_type']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
@@ -29,7 +30,9 @@ class MatchReportForm(forms.ModelForm):
 
 """
 Comment form for adding comments to a match report
-""" 
+"""
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -37,4 +40,3 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Add a comment...'}),
         }
-        
