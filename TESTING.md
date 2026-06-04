@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+- [Code Validation](#code-validation)
 - [Manual Testing](#manual-testing)
   - [Authentication](#authentication)
   - [CRUD](#crud)
@@ -14,6 +15,50 @@
 - [Browser Compatibility](#browser-compatibility)
 
 ---
+
+## Code Validation
+
+### HTML
+
+| Page | URL | Result |
+|------|-----|--------|
+| Homepage | `/` | Warning only - no h1 (known issue) |
+| Reports list | `/reports/` | No errors or warnings |
+| Report detail | `/reports/1/` | No errors or warnings |
+| Create form | `/reports/create/` | Warning only — no h1 (known issue) |
+| Login | `/accounts/login/` | No errors or warnings |
+
+![HTML validation homepage](docs/testing/html-valid-home-result.png)
+
+![HTML validation reports list](docs/testing/html-valid-report-list-result.png)
+
+![HTML validation report detail](docs/testing/html-valid-report-detail-result.png)
+
+![HTML validation create form](docs/testing/html-valid-create-report-result.png)
+
+![HTML validation login](docs/testing/html-valid-login-result.png)
+
+### CSS
+
+| File | Result |
+|------|--------|
+| style.css | No errors |
+
+![CSS validation](docs/testing/css-validator-result.png)
+
+### Python (PEP8)
+
+| File | Result |
+|------|--------|
+| models.py | No errors |
+| views.py | No errors |
+| forms.py | No errors |
+| urls.py | No errors |
+
+![PEP8 models](docs/testing/pep8-models-validator-result.png)
+![PEP8 views](docs/testing/pep8-views-validator-result.png)
+![PEP8 forms](docs/testing/pep8-forms-validator-result.png)
+![PEP8 urls](docs/testing/pep8-urls-validator-result.png)
 
 ## Manual Testing
 
